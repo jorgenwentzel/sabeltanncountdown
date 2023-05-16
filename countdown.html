@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .header-container{
+      text-align: center;
+      padding: 10px 0 10px 0;
+    }
+    
+    .header {
+      font-size: 30px;
+      line-height: 50px;
+      font-family: Arial;
+      font-weight: bold;
+    }
+    .emoji {
+      font-size: 40px;
+      line-height: 50px;
+      width: 40px;
+      height: 40px;
+    }
+    .emoji-container {
+      width: 400px; /* 10 emojis * 40px */
+      margin: auto;
+      word-wrap: break-word;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-container">
+  <span class="header">KAPTEIN SABELTANN</span>
+  </div>
+  <div id="countdown" class="emoji-container"></div>
+
+  <script>
+    function calculateDaysUntil(endDate) {
+      var now = new Date();
+      var distance = endDate - now;
+
+      if (distance < 0) {
+        return 0;
+      }
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      return days;
+    }
+
+    function updateCountdown() {
+      var endDate = new Date("2023-07-23");
+      var days = calculateDaysUntil(endDate);
+      var countdownDiv = document.getElementById('countdown');
+
+      countdownDiv.innerHTML = "";
+      for (var i = 0; i < days; i++) {
+        var emojiSpan = document.createElement('span');
+        emojiSpan.textContent = "💀";
+        emojiSpan.classList.add('emoji');
+        countdownDiv.appendChild(emojiSpan);
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000 * 60 * 60 * 24); /* Update every day */
+  </script>
+</body>
+</html>
